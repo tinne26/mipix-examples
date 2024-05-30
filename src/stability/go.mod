@@ -4,7 +4,7 @@ go 1.22.2
 
 require (
 	github.com/hajimehoshi/ebiten/v2 v2.7.3
-	github.com/tinne26/mipix v0.0.0-20240520103444-00fd6ca86a4e
+	github.com/tinne26/mipix v0.0.0-20240530123220-93faabb835ae
 )
 
 require (

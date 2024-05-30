@@ -86,25 +86,22 @@ type Player struct {
 }
 
 func (self *Player) Update() {
-	self.animation.Update()
-	self.updateDirection()
-	if self.moving {
-		self.ensureAnimation(&MoveAnimation)
-		preX := self.x
-		switch self.animation.InPreLoopPhase() {
-		case true  : self.x += float64(self.direction)*0.48
-		case false : self.x += float64(self.direction)*1.24
+	for range mipix.Tick().GetRate() {
+		self.animation.Update()
+		self.updateDirection()
+		if self.moving {
+			self.ensureAnimation(&MoveAnimation)
+			preX := self.x
+			switch self.animation.InPreLoopPhase() {
+			case true  : self.x += float64(self.direction)*0.48
+			case false : self.x += float64(self.direction)*1.24
+			}
+	
+			self.x = min(max(self.x, 29.5), 284.5 - PlayerFrameWidth)
+			if self.x == preX { self.moving = false }
 		}
-
-		self.x = min(max(self.x, 29.5), 284.5 - PlayerFrameWidth)
-		if self.x == preX { self.moving = false }
-	}
-	if !self.moving {
-		self.ensureAnimation(&IdleAnimation)
-		if self.direction == -1 {
-			self.x = float64(int(self.x + 0.5)) - 0.5
-		} else {
-			self.x = float64(int(self.x)) + 0.5
+		if !self.moving {
+			self.ensureAnimation(&IdleAnimation)
 		}
 	}
 }
@@ -174,9 +171,9 @@ func (self *Game) Update() error {
 	if inpututil.IsKeyJustPressed(ebiten.KeyZ) {
 		_, targetZoom := mipix.Camera().GetZoom()
 		if targetZoom == 1.0 {
-			mipix.Camera().ZoomFrom(1.0, 1.5, 60)
+			mipix.Camera().Zoom(1.5)
 		} else {
-			mipix.Camera().ZoomFrom(1.5, 1.0, 60)
+			mipix.Camera().Zoom(1.0)
 		}
 	}
 
@@ -303,7 +300,6 @@ func main() {
 	}
 
 	// set camera initial position
-	mipix.Camera().SetTracker(mipix.LinearTracker)
 	camX, camY := player.GetCameraCoords()
 	mipix.Camera().ResetCoordinates(camX, camY)
 

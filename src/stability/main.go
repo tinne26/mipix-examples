@@ -6,6 +6,7 @@ import "image/png"
 import "image/color"
 
 import "github.com/tinne26/mipix"
+import "github.com/tinne26/mipix/tracker"
 import "github.com/hajimehoshi/ebiten/v2"
 import "github.com/hajimehoshi/ebiten/v2/inpututil"
 
@@ -62,8 +63,8 @@ func (self *Game) Update() error {
 	if inpututil.IsKeyJustPressed(ebiten.KeyZ) {
 		_, target := mipix.Camera().GetZoom()
 		switch target {
-		case 1.0: mipix.Camera().ZoomFrom(1.0, 2.0, 60)
-		case 2.0: mipix.Camera().ZoomFrom(2.0, 1.0, 60)
+		case 1.0: mipix.Camera().Zoom(2.0)
+		case 2.0: mipix.Camera().Zoom(1.0)
 		}
 	}
 	if inpututil.IsKeyJustPressed(ebiten.KeyS) {
@@ -105,7 +106,7 @@ func main() {
 
 	// create game and run it
 	game := &Game{ graphic: loadGraphic("sword", 0, 0) }
-	mipix.Camera().SetTracker(mipix.LinearTracker)
+	mipix.Camera().SetTracker(tracker.Linear)
 	x, y := game.graphic.Center()
 	mipix.Camera().ResetCoordinates(x, y)
 	err := mipix.Run(game)
