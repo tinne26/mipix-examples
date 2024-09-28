@@ -1,4 +1,4 @@
-module github.com/tinne26/mipix-examples/src/camera_tracking
+module github.com/tinne26/mipix-examples/src/tutorial/camera_tracking
 
 go 1.22.2
 

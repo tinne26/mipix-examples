@@ -1,4 +1,4 @@
-module github.com/tinne26/mipix-examples/src/draw_image
+module github.com/tinne26/mipix-examples/src/tutorial/draw_image
 
 go 1.22.2
 

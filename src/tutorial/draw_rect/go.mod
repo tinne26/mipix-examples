@@ -1,4 +1,4 @@
-module github.com/tinne26/mipix-examples/src/draw_rect
+module github.com/tinne26/mipix-examples/src/tutorial/draw_rect
 
 go 1.22.2
 

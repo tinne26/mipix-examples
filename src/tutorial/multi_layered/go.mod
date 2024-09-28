@@ -1,4 +1,4 @@
-module github.com/tinne26/mipix-examples/src/multi_layered
+module github.com/tinne26/mipix-examples/src/tutorial/multi_layered
 
 go 1.22.2
 

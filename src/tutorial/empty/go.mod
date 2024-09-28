@@ -1,4 +1,4 @@
-module github.com/tinne26/mipix-examples/src/empty
+module github.com/tinne26/mipix-examples/src/tutorial/empty
 
 go 1.22.2
 

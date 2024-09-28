@@ -1,4 +1,4 @@
-module github.com/tinne26/mipix-examples/src/cursor_position
+module github.com/tinne26/mipix-examples/src/tutorial/cursor_position
 
 go 1.22.2
 
