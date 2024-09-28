@@ -8,8 +8,8 @@ github.com/hajimehoshi/ebiten/v2 v2.7.4 h1:X+heODRQ3Ie9F9QFjm24gEZqQd5FSfR9XuT2X
 github.com/hajimehoshi/ebiten/v2 v2.7.4/go.mod h1:H2pHVgq29rfm5yeQ7jzWOM3VHsjo7/AyucODNLOhsVY=
 github.com/jezek/xgb v1.1.1 h1:bE/r8ZZtSv7l9gk6nU0mYx51aXrvnyb44892TwSaqS4=
 github.com/jezek/xgb v1.1.1/go.mod h1:nrhwO0FX/enq75I7Y7G8iN1ubpSGZEiA3v9e9GyRFlk=
-github.com/tinne26/mipix v0.0.0-20240530123220-93faabb835ae h1:FndsGoJ180WXewDaZolGS7W44SSAQSuGiu+rDnP7RdU=
-github.com/tinne26/mipix v0.0.0-20240530123220-93faabb835ae/go.mod h1:xqTu8mPJ4kb0s/DTzJCpiCgH+99vNB+e9goumOpBago=
+github.com/tinne26/mipix v0.0.0-20240928133924-a39b9abed693 h1:hkGIv6awE30Rj8dlYSheW5i70lGU7597WRoQwkbAGUQ=
+github.com/tinne26/mipix v0.0.0-20240928133924-a39b9abed693/go.mod h1:xqTu8mPJ4kb0s/DTzJCpiCgH+99vNB+e9goumOpBago=
 golang.org/x/image v0.16.0 h1:9kloLAKhUufZhA12l5fwnx2NZW39/we1UhBesW433jw=
 golang.org/x/image v0.16.0/go.mod h1:ugSZItdV4nOxyqp56HmXwH0Ry0nBCpjnZdpDaIHdoPs=
 golang.org/x/sync v0.7.0 h1:YsImfSBoP9QPYL0xyKJPq0gcaJdG3rInoqxTWbfQu9M=

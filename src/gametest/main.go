@@ -152,7 +152,6 @@ type Game struct {
 	backGraphics  []Graphic
 	frontGraphics []Graphic
 	player Player
-	needsRedraw bool
 }
 
 func (self *Game) Update() error {
@@ -186,13 +185,12 @@ func (self *Game) Update() error {
 	self.player.Update()
 	x, y := self.player.GetCameraCoords()
 	mipix.Camera().NotifyCoordinates(x, y)
-	self.needsRedraw = true
+	mipix.Redraw().Request()
 	return nil
 }
 
 func (self *Game) Draw(canvas *ebiten.Image) {
-	if !self.needsRedraw && !mipix.LayoutHasChanged() { return }
-	self.needsRedraw = false
+	if !mipix.Redraw().Pending() { return }
 
 	mipix.Debug().Drawf("[Q/E] %s filter", mipix.Scaling().GetFilter().String())
 	mipix.Debug().Drawf("[A/D] Move")
@@ -229,6 +227,7 @@ func main() {
 	mipix.SetResolution(GameWidth, GameHeight)
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
 	ebiten.SetScreenClearedEveryFrame(false)
+	mipix.Redraw().SetManaged(true)
 
 	// create animations
 	pss := loadGraphic("player", 0, 0).Source // player spritesheet

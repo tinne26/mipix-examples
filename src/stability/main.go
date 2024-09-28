@@ -44,7 +44,6 @@ type Game struct {
 	graphic Graphic
 	swing bool
 	xOffset float64
-	needsRedraw bool
 }
 
 func (self *Game) Update() error {
@@ -78,13 +77,12 @@ func (self *Game) Update() error {
 	}
 	x, y := self.graphic.Center()
 	mipix.Camera().NotifyCoordinates(x + self.xOffset, y)
-	self.needsRedraw = true
+	mipix.Redraw().Request()
 	return nil
 }
 
 func (self *Game) Draw(canvas *ebiten.Image) {
-	if !self.needsRedraw && !mipix.LayoutHasChanged() { return }
-	self.needsRedraw = false
+	if !mipix.Redraw().Pending() { return }
 
 	mipix.Debug().Drawf("[Q/E] %s filter", mipix.Scaling().GetFilter().String())
 	mipix.Debug().Drawf("[S] Swing on/off")
@@ -103,6 +101,7 @@ func main() {
 	mipix.SetResolution(GameWidth, GameHeight)
 	ebiten.SetWindowResizingMode(ebiten.WindowResizingModeEnabled)
 	ebiten.SetScreenClearedEveryFrame(false)
+	mipix.Redraw().SetManaged(true)
 
 	// create game and run it
 	game := &Game{ graphic: loadGraphic("sword", 0, 0) }

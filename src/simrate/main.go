@@ -55,11 +55,13 @@ func (self *Game) Update() error {
 		case 1.0: mipix.Camera().Zoom(3.0)
 		case 3.0: mipix.Camera().Zoom(1.0)
 		}
+		mipix.Redraw().Request()
 	}
 
 	// trigger shake
 	if inpututil.IsKeyJustPressed(ebiten.KeyX) {
 		mipix.Camera().TriggerShake(mipix.ZeroTicks, 480, 160)
+		mipix.Redraw().Request()
 	}
 
 	// update square position
